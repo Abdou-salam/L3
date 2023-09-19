@@ -8,3 +8,4 @@ def gen_list_random_int(int_nbr =0,int_binf=0,int_bsup=0):
     return lst    
 print(gen_list_random_int(5,13,32))
 print(gen_list_random_int())
+
