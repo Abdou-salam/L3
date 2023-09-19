@@ -1,6 +1,8 @@
 import random as rm
 import time
 from math import *
+import matplotlib.pyplot as plt
+import numpy as np
 
 def gen_list_random_int(int_nbr =0,int_binf=0,int_bsup=0):
     if int_nbr == 0 and int_binf == 0 and int_bsup==0:
@@ -81,8 +83,18 @@ def perf_mix(mix_list_v:callable,shuffle:callable,lst_int,nbr_ex)->tuple:
     return res
 
 
-res = perf_mix(mix_list_v2,rm.shuffle,[10, 500, 5000, 50000, 100000],nbr_ex=5)
+res = perf_mix(mix_list_v2,rm.shuffle,[10, 500, 5000, 50000, 100000],nbr_ex=50)
 print(res[0])
 print(res[1])
-        
-    
+
+def afficher_graphique():
+    x_axis_list = [10, 500, 5000, 50000, 100000]
+    fig, ax = plt.subplots()
+
+    ax.plot(x_axis_list,res[0],'bo-',label='Mix_list')
+    ax.plot(x_axis_list,res[1], 'r*-', label='random.shuffle')
+    ax.set(xlabel='Abscisse x', ylabel='Ordonnée y',
+    title='Fonctions perf_mix')
+    ax.legend(loc='upper center', shadow=True, fontsize='x-large')
+    plt.show()
+afficher_graphique()
