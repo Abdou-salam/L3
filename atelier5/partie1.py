@@ -77,7 +77,7 @@ def listPaire2(lst):
     if len(lst) == 0:
         return []
     if lst[0] % 2 == 0:
-        print("tes",listPaire2(lst[1:]))
+        
         return [lst[0]] + listPaire2(lst[1:])
     else:
         return listPaire2(lst[1:])
@@ -85,3 +85,16 @@ def listPaire2(lst):
 print("liste paire2")  
 print(listPaire2([18,3,4,8,3]))
 print(listPaire2([]))
+
+def concat_list(lst):
+    taille = len(lst) - 1
+
+    if len(lst) == 0:
+        return []
+    if taille != 0:
+        return lst[taille] + concat_list(lst[0:taille])
+    else:
+        return lst[taille] + concat_list(lst[0:taille])
+print("concaténation")
+print(concat_list([[0,1],[2,3],[4],[6,7]]))
+print(concat_list([]))
