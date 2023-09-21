@@ -38,5 +38,50 @@ print(longueur([1,3,4])),
 print(longueur([1,3,4,8,3]))
 
 def findMin(lst):
+    mini = None
+    if len(lst) == 0:
+        return ValueError
+    elif len(lst) == 1:
+       mini = lst[0]
+       return mini
+    else:
+        mini = findMin(lst[1:])
+        if mini > lst[0]:
+            mini = lst[0]
+    return mini
 
-    if l
+         
+       
+    
+print("minimum")
+print(findMin([1,3,4,8,3]))
+print(findMin([]))
+
+def listPaire(lst):
+
+    taille = len(lst) - 1
+        
+    if len(lst) == 0:
+        return lst
+    elif lst[taille] % 2 == 0:
+        return [lst[taille]] + listPaire(lst[0:taille])
+    else:
+        return  listPaire(lst[0:taille])
+    
+print("liste paire")  
+print(listPaire([16,3,4,8,3]))
+print(listPaire([]))
+
+#2 ème méthode
+def listPaire2(lst):
+    if len(lst) == 0:
+        return []
+    if lst[0] % 2 == 0:
+        print("tes",listPaire2(lst[1:]))
+        return [lst[0]] + listPaire2(lst[1:])
+    else:
+        return listPaire2(lst[1:])
+    
+print("liste paire2")  
+print(listPaire2([18,3,4,8,3]))
+print(listPaire2([]))
