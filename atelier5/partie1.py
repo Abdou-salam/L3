@@ -87,14 +87,21 @@ print(listPaire2([18,3,4,8,3]))
 print(listPaire2([]))
 
 def concat_list(lst):
-    taille = len(lst) - 1
+    index_max = len(lst) - 1
 
-    if len(lst) == 0:
+    if index_max == -1:
         return []
-    if taille != 0:
-        return lst[taille] + concat_list(lst[0:taille])
     else:
-        return lst[taille] + concat_list(lst[0:taille])
+        return lst[index_max] + concat_list(lst[0:index_max])
 print("concaténation")
 print(concat_list([[0,1],[2,3],[4],[6,7]]))
+print(concat_list([[4,0],[3,0],[2,4],[2,4,7]]))
 print(concat_list([]))
+
+def concat_list2(lst):
+    if len(lst) == 0:
+        return []
+    else:
+        return lst[0] + concat_list2(lst[1:])
+print("concate 2")
+print(concat_list2([[0,1],[2,3],[4],[6,7]]))
