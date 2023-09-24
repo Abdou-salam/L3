@@ -106,11 +106,34 @@ def concat_list2(lst):
 print("concate 2")
 print(concat_list2([[0,1],[2,3],[4],[6,7]]))
 
-def separe(lst):
+def separe(lst:list)->tuple:
+    
     if len(lst) == 0:
         return ([],[])
     elif lst[0] % 2 == 0:
-        return ([lst[0]],[])
+        pairs ,impairs = separe(lst[1:])
+        return ([lst[0]] + pairs,impairs)
     else:
-        
-        
+        pairs ,impairs = separe(lst[1:])
+        return ( pairs,[lst[0]] + impairs)
+lst = [1,6,7,4,9,11,28]
+print("fonction separe")
+res =separe(lst)
+print(res[0])
+print(res[1])
+
+#Autre méthode 
+def separe2(lst,result=([],[])):
+    if len(lst) == 0:
+        return result
+    elif lst[0] % 2 == 0:
+        result[0].append(lst[0])
+    else:
+        result[1].append(lst[0])
+    return separe2(lst[1:],result)
+
+lst2 = [1,6,7,4,9,11,28]
+print("fonction separe2")
+res =separe2(lst2)
+print(res[0])
+print(res[1])
