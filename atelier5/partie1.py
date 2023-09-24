@@ -105,3 +105,12 @@ def concat_list2(lst):
         return lst[0] + concat_list2(lst[1:])
 print("concate 2")
 print(concat_list2([[0,1],[2,3],[4],[6,7]]))
+
+def separe(lst):
+    if len(lst) == 0:
+        return ([],[])
+    elif lst[0] % 2 == 0:
+        return ([lst[0]],[])
+    else:
+        
+        
