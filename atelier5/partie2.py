@@ -72,3 +72,16 @@ for index_l in range(4):
             I[index_l,index_col] = 0
 print(I)
             
+#exercice2.2
+def matrice_trace(matrice:object):
+    ligne = matrice.ndim
+    colonne = len(matrice)
+    tr = 0
+    for index_l in range(ligne):
+        for index_col in range(colonne):
+            if index_col == index_l:
+                tr += matrice[index_l,index_col]
+    return tr
+A = np.array(([3,1],[6,4]))
+print("fonction matrice_trace")
+print(matrice_trace(A))
