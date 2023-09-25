@@ -50,6 +50,14 @@ print(my_add(A,B))
 # Exercice2:
 
 #1) création de matrice
+print("exo2.1")
+import random as rd
+A = np.empty((4,4),dtype=int)
 
-A = np.array((4,4))
+for index_l in range(4):
+    for index_col in range(4):
+        A[index_l,index_col] = rd.randint(0,10)
+
+print( A )
+    
 
