@@ -60,4 +60,15 @@ for index_l in range(4):
 
 print( A )
     
+#2) création d'une matrice identité
+print("Matrice identité")
+I = np.empty((4,4),dtype=int)
 
+for index_l in range(4):
+    for index_col in range(4):
+        if index_col == index_l:
+            I[index_l,index_col] = 1
+        else:
+            I[index_l,index_col] = 0
+print(I)
+            
