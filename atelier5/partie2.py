@@ -27,3 +27,29 @@ def my_where(table:object,valeur:int)->list:
 print("fonction where")
 arr2 = np.array([5,9,7,34,9,71,9,0,8])
 print("Les indices de la valeur rechercher est:",my_where(arr2,9))
+
+#Question3
+
+def my_add(tableA:object,tableB:object)->object:
+    
+    if tableA.ndim == tableB.ndim :
+        R = np.empty((tableA.ndim,tableA.ndim),dtype=int)
+        ligne = tableB.ndim 
+        colonne = len(tableB) 
+        for index_l in range(ligne):
+            for index_col in range(colonne):
+                R[index_l,index_col] = tableA[index_l,index_col] + tableB[index_l,index_col]
+        return R
+    
+print("Question 3 fonction")   
+A = np.array(([3,1],[6,4]))
+B = np.array(([1,8],[4,2]))
+print(my_add(A,B))
+
+
+# Exercice2:
+
+#1) création de matrice
+
+A = np.array((4,4))
+
