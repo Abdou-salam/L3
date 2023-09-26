@@ -90,8 +90,8 @@ print(matrice_trace(A))
 
 print("fonction est symetrie")
 def est_symetrique(matrice:object)->bool:
-    ligne = matrice.ndim
-    colonne = len(matrice)
+    ligne = matrice.shape[0]
+    colonne = matrice.shape[1]
     res = False
     for index_l in range(ligne):
         for index_col in range(colonne):
@@ -143,3 +143,29 @@ def produit_diagonal(matrice:object)->int:
 print("produit diagonal")
 A = np.array(([3,1],[6,4]))
 print(produit_diagonal(A))
+
+#3)Application des fonctions
+
+print("application des fonction\n")
+A = np.array([[1,2],[3,4]])
+print("trace de",A, "est:",matrice_trace(A))
+print("calcule du produit des élément de la diagonale")
+print("le produit de:",A,"est:",produit_diagonal(A))
+print("symetrie de :",A)
+mat = (A + A.T)/2
+print(est_symetrique(mat))
+
+#4) Manipulation supplémentaire
+
+#partie 3
+
+def matriceAdjacences(S,A):
+    colonne,ligne = len(S)
+    mat = np.zeros([ligne,colonne])
+    for index_l in range(ligne):
+        for index_col in range(colonne):
+            if [index_l,index_col] == A[index_l,index_col]:
+                mat[index_l,index_col] = 1
+            else:
+                 mat[index_l,index_col] = 0
+    return mat
