@@ -154,18 +154,53 @@ print("le produit de:",A,"est:",produit_diagonal(A))
 print("symetrie de :",A)
 mat = (A + A.T)/2
 print(est_symetrique(mat))
-
+print("\n")
 #4) Manipulation supplémentaire
 
 #partie 3
 
-def matriceAdjacences(S,A):
-    colonne,ligne = len(S)
+def matriceAdjacences(S:list,A:list)->object:
+    ligne = len(S)
+    colonne = len(S)
+    taille_index = len(A)
+    
     mat = np.zeros([ligne,colonne])
+
+    for index in range(taille_index):
+        tmp = A[index]
+        mat[tmp[0],tmp[1]]= 1
+
     for index_l in range(ligne):
         for index_col in range(colonne):
-            if [index_l,index_col] == A[index_l,index_col]:
-                mat[index_l,index_col] = 1
-            else:
-                 mat[index_l,index_col] = 0
+            if  mat[index_l,index_col] != 1:
+                mat[index_l,index_col] = 0
     return mat
+sommet = [0,1,2,3,4]
+arc =[(0,1),(0,2),(1,2),(1,4),(2,3),(3,4),(4,2)]
+
+print("matriceAdjacence")
+print(matriceAdjacences(sommet,arc))
+print("\n")
+
+#matriceAdjacencePond
+
+def matriceAdjacencePond(S,A):
+    ligne = len(S)
+    colonne = len(S)
+    taille_index = len(A)
+    
+    mat = np.zeros([ligne,colonne])
+
+    for index in range(taille_index):
+        tmp = A[index]
+        mat[tmp[0],tmp[1]]= tmp[2]
+
+    for index_l in range(ligne):
+        for index_col in range(colonne):
+            if  mat[index_l,index_col] == "":
+                mat[index_l,index_col] = 0
+    return mat
+sommet2 = [0,1,2,3,4]
+print("atriceAdjacencePond")
+arc2= [[0,1,40], [0,2,21], [1,4,44], [1,2,14],[2,3,10], [3,4,35], [4,2,23]]
+print(matriceAdjacencePond(sommet2,arc2))
