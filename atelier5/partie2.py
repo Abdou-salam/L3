@@ -204,3 +204,114 @@ sommet2 = [0,1,2,3,4]
 print("atriceAdjacencePond")
 arc2= [[0,1,40], [0,2,21], [1,4,44], [1,2,14],[2,3,10], [3,4,35], [4,2,23]]
 print(matriceAdjacencePond(sommet2,arc2))
+print("\n")
+
+# 3)lireMatriceFichier
+#def lireMatriceFichier(nomfichier):
+   # f = open(nomfichier,"r")
+   # c = f.readline()
+    #lst =[]
+   # compteur = 0
+    #ligne = len(c)
+    #while c != "" :
+    #    compteur += 1
+    #    c = f.readline()
+     
+
+   # mat = np.array([ligne,compteur])
+
+   # index_l = 0
+   # index_col = 0
+   # while c != "" :
+        #for val in c.split():
+           # mat[index_l,index_col] = val
+          #  index_l += 1
+           
+       # c = f.readline()
+       # index_col += 1
+   # return mat
+
+    
+    
+#fic = 'C:/Users/Etudiant/Desktop/L3/atelier5/graph1.txt'
+
+#print(lireMatriceFichier(fic))
+
+
+
+#4) tousLesSommets
+
+def tousLesSommets(mat):
+
+    ligne = mat.shape[0]
+    colonne = mat.shape[1]
+    lst =[]
+    if ligne == colonne:
+        for index in range(ligne):
+            lst.append(index)
+        return lst
+print("tousLesSommets")
+mat = np.array([[1,0,1,0],[1,1,0,0],[1,0,0,0],[0,0,0,0]])
+print(tousLesSommets(mat))
+print("\n")
+
+#5)listeArcs(mat)
+
+def  listeArcs(mat):
+    ligne = mat.shape[0]
+    colonne = mat.shape[1]
+    lst = []
+    for index_l in range(ligne):
+        for index_col in range(colonne):
+            if mat[index_l,index_col] == 1:
+                lst.append((index_l,index_col))
+    return lst
+mat1 = np.array([[1,0,1,0],[1,1,0,0],[1,0,0,0],[0,0,0,0]])
+print("listeArcs")
+print("la matrice est:",mat)
+print(listeArcs(mat))
+
+#6) matriceIncidence
+
+def matriceIncidencer(mat):
+    ligne = mat.shape[0]
+    colonne = len(listeArcs(mat))
+    mat_incidence = np.empty((ligne,colonne))
+    arc = listeArcs(mat)
+    
+    
+    for index_l in range(ligne):
+        for indice, val in enumerate(arc):
+            if index_l == indice  and (index_l,indice) == val:
+                mat_incidence[index_l,indice] = 0
+            elif index_l in val:
+                mat_incidence[index_l,indice] = 1
+            else:
+                mat_incidence[index_l,indice] = 0
+        
+                     
+               
+    return mat_incidence
+print("matriceIncidencer")
+mat3 = np.array([[0,1,1,0,0],[0,0,1,0,1],[0,0,0,1,0],[0,0,0,0,1],[0,0,1,0,0]])
+print(listeArcs(mat3))
+print("Matrice d'adjacence:")
+print(mat3)
+print("Matrice d'incidence:")
+print(matriceIncidencer(mat3))
+print("\n")
+
+#7)fonction est voisin
+def est_voisin(mat:object,S:int,V:int)->bool:
+
+    if mat[S,V] == 1 or mat[V,S] == 1:
+        res = True
+    else:
+        res = False
+    return res
+
+mat4 = np.array([[0,1,1,0,0],[0,0,1,0,1],[0,0,0,1,0],[0,0,0,0,1],[0,0,1,0,0]])
+print("Matrice d'adjacence:")
+print(mat4)
+print(est_voisin(mat4,0,4))
+print(est_voisin(mat4,3,4))
